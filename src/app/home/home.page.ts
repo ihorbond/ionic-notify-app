@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit, OnDestroy {
   private events: EventResponse[] = [];
-  public sub: Subscription;
+  private sub: Subscription;
 
   constructor(
     private _eventsService: EventsService,
@@ -21,7 +21,7 @@ export class HomePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this._eventsService.getAll().subscribe((e: EventResponse) => {
       this.events.push(e);
-    })
+    });
   }
 
   ngOnDestroy() {

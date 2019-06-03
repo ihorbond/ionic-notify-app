@@ -1,14 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Notify
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let oneEvent of getEvents()" size-xs="12" size-sm="6" size-md="4" size-lg="3" size-xl="2">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+              {{oneEvent.event.created | date:'short'}}
+            </ion-card-subtitle>
+            <ion-card-title>
+              {{oneEvent.event.caller.firstName}} {{oneEvent.event.caller.lastName}}
+            </ion-card-title>
+          </ion-card-header>
+          <ion-item>
+            <ion-icon name="alert" slot="start" color="danger"></ion-icon>
+            <ion-button fill="outline" slot="end" (click)="details(oneEvent)">Details</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
