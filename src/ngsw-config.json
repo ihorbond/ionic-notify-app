@@ -23,5 +23,36 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "emergency-calls",
+      "urls": ["https://us-central1-ps-notify-api.cloudfunctions.net/api/event/*"],
+      "cacheConfig": {
+        "maxSize": 250,
+        "maxAge": "30d",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "latest",
+      "urls": ["https://us-central1-ps-notify-api.cloudfunctions.net/api/latest"],
+      "cacheConfig": {
+        "maxSize": 500,
+        "maxAge": "1d",
+        "timeout": "2s",
+        "strategy": "freshness"
+      }
+    },
+    {
+      "name": "acknowledments",
+      "urls": ["https://us-central1-ps-notify-api.cloudfunctions.net/api/acknowledgements/*"],
+      "cacheConfig": {
+        "maxSize": 500,
+        "maxAge": "1d",
+        "timeout": "2s",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
